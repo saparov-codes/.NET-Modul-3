@@ -40,5 +40,58 @@ namespace MovieCRUD.Api.Controllers
             _movieService.UpdateMovie(movieDto);
         }
 
+        [HttpGet("getAllMoviesByDirector")]
+        public List<MovieDto> GetMovieDtosByAuthor(string director)
+        {
+            return _movieService.GetAllMoviesByDirector(director);
+        }
+
+        [HttpGet("getTopRatedMovie")]
+        public MovieDto GetTopMovie()
+        {
+            return _movieService.GetTopRatedMovie();
+        }
+
+        [HttpGet("getMoviesReleasedAfterYear")]
+        public List <MovieDto> GetMovieDtosAfterDate(DateTime time)
+        {
+            return _movieService.GetMoviesReleasedAfterYear(time);
+        }
+
+        [HttpGet("getHighestGrossingMovie")]
+        public MovieDto GetHighestGrossingMovie()
+        {
+            return _movieService.GetHighestGrossingMovie();
+        }
+
+        [HttpGet("searchMoviesByTitle")]
+        public List<MovieDto > GetMovieDtosByTitle(string title)
+        {
+            return _movieService.SearchMoviesByTitle(title);
+        }
+
+        [HttpGet("getMoviesWithinDurationRange")]
+        public List<MovieDto> GetMovieDtosWithinDurationRange(int minMinutes, int maxMinutes)
+        {
+            return _movieService.GetMoviesWithinDurationRange(minMinutes, maxMinutes);
+        }
+
+        [HttpGet("getTotalBoxOfficeEarningsByDirector")]
+        public long GetTotalBoxOfficeEarningsByDirector(string director)
+        {
+            return _movieService.GetTotalBoxOfficeEarningsByDirector(director);
+        }
+
+        [HttpGet("getMoviesSortedByRating")]
+        public List<MovieDto> SortedDtos()
+        {
+            return _movieService.GetMoviesSortedByRating();
+        }
+
+        [HttpGet("getRecentMovies")]
+        public List<MovieDto> GetMovieDtosByDate(DateTime time)
+        {
+            return _movieService.GetRecentMovies(time);
+        }
     }
 }

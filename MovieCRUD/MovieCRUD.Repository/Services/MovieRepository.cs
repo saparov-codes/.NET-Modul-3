@@ -14,7 +14,7 @@ public class MovieRepository : IMovieRepository
 
         if (!File.Exists(_path))
         {
-            File.WriteAllText(_path, "[]"); 
+            File.WriteAllText(_path, "[]");
         }
 
         _movies = GetAll();
@@ -36,7 +36,6 @@ public class MovieRepository : IMovieRepository
             _movies.Remove(res);
             SaveData();
         }
-        throw new Exception("Id isn't found");
     }
 
     public List<Movie> GetAll()
@@ -48,7 +47,7 @@ public class MovieRepository : IMovieRepository
 
     public Movie GetById(Guid id)
     {
-        var res  = _movies.FirstOrDefault(x => x.Id == id) ?? throw new Exception("ID no found");
+        var res = _movies.FirstOrDefault(x => x.Id == id) ?? throw new Exception("ID no found");
         return res;
     }
 

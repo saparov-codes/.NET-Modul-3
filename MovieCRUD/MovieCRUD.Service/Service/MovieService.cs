@@ -115,6 +115,10 @@ public class MovieService : IMovieService
                     .ToList();
     }
 
+    /// <summary>
+    /// If Update Id isn't found, create a new movie
+    /// </summary>
+    /// <param name="movieDto"></param>
     public void UpdateMovie(MovieDto movieDto)
     {
         var movie = _movieRepository.GetAll().FirstOrDefault(x => x.Id == movieDto.Id);
@@ -122,7 +126,10 @@ public class MovieService : IMovieService
         {
             _movieRepository.Update(ConvertToMovie(movieDto));
         }
-        throw new Exception("Id isn't found!");
+        else
+        {
+            _movieRepository.Add(ConvertToMovie(movieDto));
+        }
     }
 
     private Movie ConvertToMovie(MovieDto movieDto)
